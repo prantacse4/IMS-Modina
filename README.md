@@ -11,3 +11,31 @@
 
 ## Install Composer Dependencies
 `composer install`
+
+## Install NPM Dependencies
+`npm install`
+
+
+## Create a copy of .env file
+`cp .env.example .env`
+
+
+## Generate an app encryption key
+`php artisan key:generate`
+
+## An empty database for our application
+`modina`
+
+
+## Migrating Database
+`php artisan migrate`
+
+## Refresh Full Database
+`php artisan migrate:fresh`
+
+
+## Refreshign Application
+`php artisan optimize:clear`
+
+`APPLICATION IS READY`
+
