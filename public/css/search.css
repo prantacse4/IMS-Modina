@@ -1,0 +1,253 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.searchcontent {
+    height: 100vh;
+    width: 100%;
+    padding-top: 10vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.btn {
+    background: #38c172;
+    color: white;
+    font-weight: 500;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.name {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.name h5 {
+    border-radius: 19rem;
+    background: #38c172;
+    color: white;
+    height: 8rem;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: roboto;
+    font-weight: 100;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+}
+
+.cardcontent {
+    margin: 1rem 0;
+}
+
+.cardcontent p {
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+.fullcontent {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.vlsearch {
+    background: #38c172;
+    height: 13rem;
+    width: 74%;
+    border-radius: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.vlsearch:hover {
+    width: 60%;
+    cursor: pointer;
+    box-shadow: 4px 19px 15px -15px rgba(0, 0, 0, .22);
+    background: #37ae69;
+    transition: all .8s ease-in-out;
+}
+
+.inssearch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    color: white;
+    font-size: 1.8rem;
+}
+
+.inssearch:hover {
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+}
+
+.rowcenter {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.navbar2 {
+    padding: 1rem;
+}
+
+.navbar2 a {
+    padding: 0 .4rem;
+    border-right: 1px solid #acacac;
+}
+
+#list {
+    position: absolute;
+}
+
+.dropdown-menu2 {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 67vw;
+    padding: 0.5rem .5rem;
+    margin: 0.125rem 0 0;
+    font-size: .9rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+}
+
+.dependendsearch {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 3rem;
+}
+
+.fgroups1 {
+    flex: 20%;
+    margin: 0;
+    font-size: 1rem;
+}
+
+.fgroups2 {
+    margin: 0rem .5rem;
+    flex: calc(73% - 1rem);
+    font-size: 1rem;
+}
+
+.fgroupsbtn {
+    flex: 7%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.select2-container .select2-selection--single {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    user-select: none;
+    height: 2.3rem;
+    -webkit-user-select: none;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #444;
+    line-height: 35px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 32px;
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    width: 20px;
+}
+
+.cardcolor {
+    background: #546e7a;
+    color: white;
+}
+
+.cardinside {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.leftside {
+    flex: 30%;
+    border-right: 1px solid white;
+}
+
+.producticon {
+    margin: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.producticon span {
+    color: crimson;
+    font-size: 9rem;
+}
+
+.productname {
+    display: flex;
+    justify-content: center;
+}
+
+.productname h5 {
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-weight: 300;
+    font-family: roboto;
+    font-size: 1.3rem;
+}
+
+.rightside {
+    flex: 65%;
+    padding-left: 2rem;
+}
+
+.proheader {}
+
+.proheader h5 {
+    font-family: nexa;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-size: 1.4rem;
+}
+
+.prodetails {}
+
+.prodetails p {
+    font-size: 1rem;
+    font-family: nexa;
+    letter-spacing: .05em;
+}
