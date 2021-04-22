@@ -8,5 +8,6 @@
 </p>
 
 
-##Install Composer Dependencies
+<br>
+## Install Composer Dependencies
 `composer install`
