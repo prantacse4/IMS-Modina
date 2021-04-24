@@ -34,7 +34,7 @@
 `php artisan migrate:fresh`
 
 
-## Refreshign Application
+## Refreshing Application
 `php artisan optimize:clear`
 
 `APPLICATION IS READY`
