@@ -152,6 +152,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 
     Route::get('/sale', [SaleController::class, 'sale'])->name('admin.sale');
+    Route::get('/sale/invoice/{id}', [SaleController::class, 'sale_invoice'])->name('admin.sale_invoice');
     Route::get('/gettemp/salecondition', [SaleProductController::class, 'getsalecondition'])->name('getsalecondition');
     Route::post('/sale/process/product', [SaleProductController::class, 'saleprocess'])->name('admin.saleprocess.process');
     Route::get('/select/company', [SaleProductController::class, 'selectcompany'])->name('admin.selectcompany');

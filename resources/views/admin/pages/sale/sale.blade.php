@@ -81,7 +81,7 @@
                                     <table id="example" class="table table-striped table-bordered table-hover" style="width:100%">
                                         <thead>
                                             <tr>
-                                                <th>Sale ID</th>
+                                                <th>Invoice</th>
                                                 <th>Company</th>
                                                 <th>Dealer</th>
                                                 <th>Showroom</th>
@@ -96,7 +96,15 @@
                                         @foreach ($records as $record)
 
                                             <tr>
-                                                <td>{{$record->id}}</td>
+                                                <td>
+
+                                                <a href="{{ route('admin.sale_invoice',$record->id) }}" style="color: white;">
+                                                    <button class="btn btn-info p-1  ">
+                                                        <i class="fas fa-print"> Print</i>
+                                                    </button>
+                                                    </a>
+
+                                                </td>
                                                 @foreach ($companies as $company)
                                                     @if ($record->company==$company->id)
                                                     <td>{{$company->com_name}}</td>
