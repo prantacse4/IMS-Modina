@@ -112,7 +112,7 @@
                                                     onclick="event.preventDefault();document.getElementById('form-delete-id-{{ $dealerpayment->id }}').submit();">
                                                         <i class="fa fa-trash-alt"></i>
                                                     </button>
-                                                    <form id="{{ 'form-delete-id-'.$dealerpayment->id }}" action="{{route('admin.deletepaymenthistory',$dealerpayment->id)}}" method="POST" style="display: none;">
+                                                    <form id="{{ 'form-delete-id-'.$dealerpayment->id }}" action="{{route('admin.dealerdeletepaymenthistory',$dealerpayment->id)}}" method="POST" style="display: none;">
                                                         @csrf
                                                         @method('delete')
                                                     </form>

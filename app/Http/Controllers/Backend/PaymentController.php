@@ -169,4 +169,10 @@ class PaymentController extends Controller
         DealerPayment::create($request->all());
         return redirect(route('admin.dealerpayment'))->with('message','payment added successfully!');
     }
+
+    public function dealerdeletepaymenthistory(Payment $payment)
+    {
+        $payment->delete();
+        return redirect(route('admin.dealerviewallpayments'))->with('message','Deleted Successfully');
+    }
 }
