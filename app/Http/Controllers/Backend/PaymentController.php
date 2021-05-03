@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Backend\BalanceDealer;
 use App\Models\Backend\BalanceDue;
 use App\Models\Backend\Company;
+use App\Models\Backend\Dealer;
+use App\Models\Backend\DealerPayment;
 use App\Models\Backend\Payment;
 use Illuminate\Http\Request;
 
@@ -105,4 +108,65 @@ class PaymentController extends Controller
     //     $payments = Payment::where('id',$id)->pluck('phone', 'id');
     //     return json_encode($payments);
     // }
+
+    public function dealerpayment()
+    {
+        $dealers = Dealer::all();
+        $balancedealers = BalanceDealer::all();
+        $dealerpayments = DealerPayment::orderBy('id','DESC')->get();
+        return view('admin.pages.payment.by_dealer.payment', compact('dealers','balancedealers', 'dealerpayments'));
+    }
+
+    public function dealerviewallpayments()
+    {
+        $dealers = Dealer::all();
+        $balancedealers = BalanceDealer::all();
+        $dealerpayments = DealerPayment::orderBy('id','DESC')->get();
+        return view('admin.pages.payment.by_dealer.viewallpayments', compact('dealerpayments','dealers', 'balancedealers'));
+    }
+
+
+
+    public function dealerpaymentviewer($id)
+    {
+        $payment = DealerPayment::where('id',$id)->get();
+        return view('admin.pages.payment.by_dealer.viewpayment', compact('payment'));
+    }
+
+    public function dealeraddpayment()
+    {
+        $dealers = Dealer::all();
+        return view('admin.pages.payment.by_dealer.addpayment', compact('dealers'));
+    }
+
+
+    public function dealerstore(Request $request)
+    {
+        //Validation
+        // $request->validate([
+        //     'phone' => 'required|max:255|unique:payments,phone',
+
+        // ],[
+        //     'phone.unique' => 'Phone no should be unique',
+        // ]);
+        $dealer_id = $request->dealer_id;
+        $amount = $request->amount;
+        $due = 0;
+        //Get company from Balance Due
+        $balance_dealer_all = BalanceDealer::where('dealer_id', $dealer_id)->get();
+
+        if($balance_dealer_all->count() > 0){
+            foreach ($balance_dealer_all as $balance) {
+                $balance_id = $balance->id;
+                $current_balance = $balance->balance;
+            }
+            $amount = $amount+$current_balance;
+            BalanceDealer::where('id', $balance_id)->update(['balance' => $amount]);
+        }
+        else{
+            BalanceDealer::create(['dealer_id' => $dealer_id, 'balance' => $amount]);
+        }
+        DealerPayment::create($request->all());
+        return redirect(route('admin.dealerpayment'))->with('message','payment added successfully!');
+    }
 }

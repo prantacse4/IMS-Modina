@@ -81,22 +81,14 @@ Purchase Product
 
                                 <!-- All Dealers through allDealers() function -->
                                 <tr>
-                                    <th scope="row">Dealer</th>
+                                    <th scope="row">Company</th>
                                     <td>
-                                    <select class="form-control select2 select2-info" style="width:100%;" id="dealers" name="dealers">
-                                        <option selected ="false" value="0">Select Dealer</option>
-                                        @foreach ($dealers as $dealer)
-                                            <option value="{{ $dealer->id }}">{{ $dealer->name }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input type="text" value="{{ $company[0]->com_name }}" class="form-control" readonly ></td>
+
+
                                     </td>
                                 </tr>
-                                <tr class="d-none">
-                                    <th scope="row">Dealer Mobile</th>
-                                    <td>
-                                    <input  class="form-control" type="text" id="mobile" placeholder ="Mobile no. (Include +880)">
-                                    </td>
-                                </tr>
+
                                 <tr>
                                     <th scope="row">Showroom</th>
                                     <td>
@@ -259,12 +251,12 @@ Purchase Product
                                 <!-- Updating purchase price every time through purchasePrice() function -->
                                 <!-- Checking the validity of selling price through sellingPriceValidation() function -->
                                 <td>
-                                    <input type="text" class="form-control" id="pro_purchasing" placeholder="Purchasing Price"/>
+                                    <input type="number" class="form-control" id="pro_purchasing" placeholder="Purchasing Price"/>
                                 </td>
 
                                 <!-- Setting totalAmount without any function -->
                                 <td>
-                                    <input readonly type="text" class="form-control" id="pro_total" placeholder="Total"/>
+                                    <input readonly type="number" class="form-control" id="pro_total" placeholder="Total"/>
                                 </td>
 
                                 <!-- Adding a product -->
@@ -727,7 +719,7 @@ $.ajax({
                 free = parseFloat(free);
                 qty = parseFloat(qty);
                 stockvalue = parseFloat(stockvalue);
-                    if(stockvalue<qty+free){
+                    if(stockvalue<1){
                         can_add = false;
                         $('#qty').addClass("danger_input");
                         $('#free').addClass("danger_input");
@@ -1092,7 +1084,7 @@ $('#finalSubmit').on('click', function(){
     }
 
     else {
-        var save_fullData = {date:purchaseDate, company:com_id, dealer:dealer_id, showroom:showroom_id, total_amount:total_Payment };
+        var save_fullData = {date:purchaseDate, company:com_id, showroom:showroom_id, total_amount:total_Payment };
     // Saving Data
     if (data==true) {
         $.ajax({

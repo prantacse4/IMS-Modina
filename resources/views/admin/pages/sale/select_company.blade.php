@@ -74,9 +74,9 @@
                         {{-- <form id="myform"  class="form-horizontal" action="{{ route('admin.saleprocess.process') }}" method="POST">
                             @csrf --}}
 
-                        <div class="form-group row text-center">
+                        <div class="text-center">
+                            <div class="row form-group">
                             <label class="col-md-4 col-sm-12 col-form-label">Select Company</label>
-
                             <div class="col-md-5 col-sm-12">
                                 <div class="form-group">
                                     <select class="form-control select2 select2-info"
@@ -87,13 +87,28 @@
                                     @endforeach
                                     </select>
                                 </div>
-
                             </div>
-                            <div class="col-md-3">
+                        </div>
+
+                        <div class="row form-group">
+                            <label class="col-md-4 col-sm-12 col-form-label">Select Dealer</label>
+                            <div class="col-md-5 col-sm-12">
+                                <div class="form-group">
+                                    <select class="form-control select2 select2-info"
+                                    data-dropdown-css-class="select2-info" id="dealer_id" style="width: 100%;" name="dealer_id" required>
+                                    <option value="" selected>Select Dealer</option>
+                                    @foreach ($dealers as $dealer)
+                                    <option value="{{ $dealer->id }}">{{ $dealer->name }}</option>
+                                    @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        </div>
+                        <div class="text-center">
                             <button id="myform" class="btn btn-primary pl-3 pr-3"><b>Submit</b></button>
-
-                            </div>
-
                         </div>
 
 
@@ -151,6 +166,7 @@
 $(document).ready(function () {
  var cat_id = null;
  var com_id = null;
+ var dealer_id = null;
  var urlHeader = "http://127.0.0.1:8000";
 
 
@@ -217,11 +233,13 @@ $.ajax({
 
 
     com_id = $("#com_id").val();
+    dealer_id = $("#dealer_id").val();
     $.ajax({
         type: "POST",
         url: urlHeader+"/api/post/sale/condition",
         data:{
-            com_id:com_id
+            com_id:com_id,
+            dealer_id:dealer_id
         },
         success: function (response) {
                 var url = "{{ route('admin.saleproduct') }}";

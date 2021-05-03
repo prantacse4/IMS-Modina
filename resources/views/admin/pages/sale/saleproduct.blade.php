@@ -84,9 +84,8 @@ Sale Product
                                     <th scope="row">Dealer</th>
                                     <td>
                                     <select class="form-control select2 select2-info" style="width:100%;" id="dealers" name="dealers">
-                                        <option selected ="false" value="0">Select Dealer</option>
                                         @foreach ($dealers as $dealer)
-                                            <option value="{{ $dealer->id }}">{{ $dealer->name }}</option>
+                                            <option selected value="{{ $dealer->id }}">{{ $dealer->name }}</option>
                                         @endforeach
                                     </select>
                                     </td>
@@ -259,12 +258,12 @@ Sale Product
                                 <!-- Updating purchase price every time through purchasePrice() function -->
                                 <!-- Checking the validity of selling price through sellingPriceValidation() function -->
                                 <td>
-                                    <input type="text" class="form-control" id="pro_selling" placeholder="Selling Price"/>
+                                    <input type="number" class="form-control" id="pro_selling" placeholder="Selling Price"/>
                                 </td>
 
                                 <!-- Setting totalAmount without any function -->
                                 <td>
-                                    <input readonly type="text" class="form-control" id="pro_total" placeholder="Total"/>
+                                    <input readonly type="number" class="form-control" id="pro_total" placeholder="Total"/>
                                 </td>
 
                                 <!-- Adding a product -->
@@ -284,7 +283,7 @@ Sale Product
 
                 <br>
 
-                <div class="contents">
+                <div class="contents" id="mycart">
                         <div class="d-flex">
                                     <div class="mr-auto  table-responsive p-0" style="max-height: 300px;" id="addedproductdetails">
                                         <table class="table table-hover table-striped table-head-fixed" >
@@ -370,6 +369,7 @@ var stateBalance = 0.0;
 var stateDue=0.0;
 var statetotalPayment=0.0;
 var saleDate = null;
+var mycartdisplay = true;
 var latestsavedID = 0;
 var free = 0.0;
 var productselected = false;
@@ -393,6 +393,10 @@ var fullData = [
 var deletestatus =false;
 if(deletestatus == false){
 deletestatus =true;
+if (mycartdisplay==true) {
+    mycartdisplay =false;
+    $('#mycart').addClass('d-none');
+}
 $.ajax({
         url : '/admin/getTempSaleProduct',
         type : "GET",
@@ -827,6 +831,10 @@ $.ajax({
 
 
     if(product_id>0 && qty>0 && can_add==true){
+        if (mycartdisplay==true) {
+            mycartdisplay =false;
+            $('#mycart').addClass('d-none');
+        }
         var totalPayment = 0.0;
         totalPayment = $('#totalPayment').val(totalPayment);
         $('#totalPayment').addClass("payablesuccess");

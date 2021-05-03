@@ -11,5 +11,6 @@ class TempSaleCondition extends Model
 
     protected $fillable = [
         'com_id',
+        'dealer_id',
     ];
 }

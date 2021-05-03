@@ -2,9 +2,10 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTempSaleConditionsTable extends Migration
+class CreateTriggerBalanceDealer extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +14,9 @@ class CreateTempSaleConditionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('temp_sale_conditions', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('com_id');
-            $table->unsignedBigInteger('dealer_id');
-            $table->timestamps();
-        });
+        DB::unprepared('
+        CREATE TRIGGER `AddToBalanceDealer` AFTER INSERT ON `dealers`
+ FOR EACH ROW INSERT INTO balance_dealers(dealer_id, balance, created_at) VALUES(NEW.id, 0, CURRENT_TIMESTAMP)');
     }
 
     /**
@@ -28,6 +26,6 @@ class CreateTempSaleConditionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('temp_sale_conditions');
+        DB::unprepared('DROP TRIGGER `tr_after_main_insert`');
     }
 }

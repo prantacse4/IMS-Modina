@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Backend\BalanceDealer;
 use App\Models\Backend\BalanceDue;
 use App\Models\Backend\Category;
 use App\Models\Backend\Company;
@@ -20,7 +21,6 @@ class SaleProductController extends Controller
     {
 
         $temptabledata = SaleProductTemp::all();
-        $dealers = Dealer::all();
         $showroom = Showroom::all();
         $categories = Category::all();
         $salecondition = TempSaleCondition::all()->count();
@@ -29,17 +29,19 @@ class SaleProductController extends Controller
 
             foreach ($tempselect as $temp ) {
                 $com_id = $temp->com_id;
+                $dealer_id= $temp->dealer_id;
 
             }
-
+            $dealers = Dealer::where('id', $dealer_id)->get();
             $company = Company::where('id', $com_id)->get();
             $products = Product::where('com_id', $com_id)->get();
-            $balancedue = BalanceDue::where('com_id', $com_id)->get();
+            $balancedue = BalanceDealer::where('dealer_id', $dealer_id)->get();
             $balanceduecount = $balancedue->count();
             return view('admin.pages.sale.saleproduct', compact('balanceduecount','balancedue','showroom','products','company', 'categories','temptabledata', 'dealers'));
         }
         else{
             $company = Company::all();
+            $dealers = Dealer::all();
             $categories = Category::all();
             return redirect()->route('admin.selectcompany');
         }
@@ -82,7 +84,9 @@ class SaleProductController extends Controller
     {
         $company = Company::all();
         $categories = Category::all();
-        return view('admin.pages.sale.select_company', compact('company', 'categories'));
+        $dealers = Dealer::all();
+
+        return view('admin.pages.sale.select_company', compact('company', 'categories', 'dealers'));
     }
 
 

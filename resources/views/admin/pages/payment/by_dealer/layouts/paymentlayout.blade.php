@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@yield('pagename')</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>@yield('pagename')</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        @yield('extracsscdn')
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <link rel="stylesheet" href="{{asset('backend_assets/css/adminlte.min.css')}}">
+        <link rel="stylesheet" href="{{asset('backend_assets/css/admin.css')}}">
+        <link rel="stylesheet" href="{{asset('backend_assets/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="{{asset('backend_assets/css/adminlte.min.css')}}">
-    <link rel="stylesheet" href="{{asset('backend_assets/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
-
-</head>
+    </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -91,7 +90,7 @@
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
 
-        @yield('dashboard_sidebar')
+        @yield('paymentsidebar')
     </div>
 <!-- /.sidebar -->
 </aside>
@@ -121,11 +120,11 @@
     </div>
     <!-- ./wrapper -->
 
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="{{ asset('backend_assets/js/adminlte.js') }}"></script>
+    <script src="{{asset('backend_assets/js/adminlte.js')}}"></script>
+    @yield('extrajscdn')
 
 </body>
 

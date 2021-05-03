@@ -113,6 +113,19 @@ Route::group(['prefix' => 'admin'], function () {
     Route::put('/dealer/update/{dealer}', [DealerController::class, 'updatedealer'])->name('admin.updatedealer.update');
 
 
+
+    Route::get('/dealer/payment', [PaymentController::class, 'dealerpayment'])->name('admin.dealerpayment');
+    Route::get('/dealer/payment/add', [PaymentController::class, 'dealeraddpayment'])->name('admin.dealeraddpayment');
+    Route::post('/dealer/payment/add/store', [PaymentController::class, 'dealerstore'])->name('admin.dealeraddpayment.store');
+    // Route::delete('/payment/delete/{payment}', [PaymentController::class, 'delete'])->name('admin.deletepayment');
+    Route::get('/dealer/payment/view/{id}', [PaymentController::class, 'dealerpaymentviewer'])->name('admin.dealerpaymentviewer');
+    // Route::get('/balance/edit/{id}', [PaymentController::class, 'editbalance'])->name('admin.editbalance');
+    // Route::put('/balance/update/{balance}', [PaymentController::class, 'updatebalance'])->name('admin.updatebalance.update');
+    Route::get('/dealer/payment/viewallpayments', [PaymentController::class, 'dealerviewallpayments'])->name('admin.dealerviewallpayments');
+    // Route::delete('/payment/delete/history/{payment}', [PaymentController::class, 'deletepaymenthistory'])->name('admin.deletepaymenthistory');
+
+
+
     Route::get('/payment', [PaymentController::class, 'payment'])->name('admin.payment');
     Route::get('/payment/add', [PaymentController::class, 'addpayment'])->name('admin.addpayment');
     Route::post('/payment/add/store', [PaymentController::class, 'store'])->name('admin.addpayment.store');

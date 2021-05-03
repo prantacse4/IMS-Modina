@@ -5,13 +5,12 @@ namespace App\Models\Backend;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SavePurchaseRecords extends Model
+class DealerPayment extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'date',
-        'company',
-        'showroom',
-        'total_amount',
+        'dealer_id',
+        'amount',
+        'date'
     ];
 }
