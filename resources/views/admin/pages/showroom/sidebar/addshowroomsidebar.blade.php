@@ -123,7 +123,7 @@ with font-awesome or any other icon font library -->
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('admin.payment') }}" class="nav-link ">
+                        <a href="{{ route('admin.dealerpayment') }}" class="nav-link ">
                             <i class="fa fa-share nav-icon"></i>
                             <p>By Dealer</p>
                         </a>

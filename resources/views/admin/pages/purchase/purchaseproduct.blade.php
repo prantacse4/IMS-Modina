@@ -123,14 +123,15 @@ Purchase Product
                                 <tr>
                                     <th scope="row">Balance</th>
                                     <td>
+                                        <input type="number" class="d-none" id="mainBalance" value="{{ $balancedue[0]->balance }}">
                                     @if ($balanceduecount>0)
                                     @if ($balancedue[0]->balance>=0)
-                                    <input  class="form-control" type="text" id="balance" Readonly value="{{ $balancedue[0]->balance }}" placeholder="Balance Amount">
+                                    <input  class="form-control" type="number" id="balance" Readonly value="{{ $balancedue[0]->balance }}" placeholder="Balance Amount">
                                     @else
-                                    <input  class="form-control" type="text" id="balance" Readonly value="0" placeholder="Balance Amount">
+                                    <input  class="form-control" type="number" id="balance" Readonly value="0" placeholder="Balance Amount">
                                     @endif
                                     @else
-                                    <input  class="form-control" type="text" id="balance" Readonly value="0" placeholder="Balance Amount">
+                                    <input  class="form-control" type="number" id="balance" Readonly value="0" placeholder="Balance Amount">
                                     @endif
                                     </td>
                                 </tr>
@@ -139,12 +140,12 @@ Purchase Product
                                     <td>
                                     @if ($balanceduecount>0)
                                         @if ($balancedue[0]->balance<0)
-                                        <input  class="form-control" type="text" id="due" value="{{ $balancedue[0]->balance-$balancedue[0]->balance-$balancedue[0]->balance }}" Readonly placeholder="Due Amount">
+                                        <input  class="form-control" type="number" id="due" value="{{ $balancedue[0]->balance-$balancedue[0]->balance-$balancedue[0]->balance }}" Readonly placeholder="Due Amount">
                                         @else
-                                        <input  class="form-control" type="text" id="due" value="0" Readonly placeholder="Due Amount">
+                                        <input  class="form-control" type="number" id="due" value="0" Readonly placeholder="Due Amount">
                                         @endif
                                     @else
-                                    <input  class="form-control" type="text" id="due" value="0" Readonly placeholder="Due Amount">
+                                    <input  class="form-control" type="number" id="due" value="0" Readonly placeholder="Due Amount">
                                     @endif
                                     </td>
                                 </tr>
@@ -364,6 +365,7 @@ var statetotalPayment=0.0;
 var purchaseDate = null;
 var latestsavedID = 0;
 var free = 0.0;
+var mainBalance = 0.0;
 var mycartdisplay = true;
 var productselected = false;
 var stock = 0.0;
@@ -372,6 +374,8 @@ var fullData = [
 ];
 
 
+mainBalance = $('#mainBalance').val();
+mainBalance=parseFloat(mainBalance);
 
 
 
@@ -836,6 +840,24 @@ $.ajax({
         $('#totalPayment').addClass("payablesuccess");
         $('#payment').val("0");
 
+
+        var addedTotal = parseFloat(total);
+        mainBalance = mainBalance-addedTotal;
+
+
+        if (mainBalance>=0) {
+            $('#balance').val(mainBalance);
+            $('#due').val(0);
+
+        }
+        else{
+            $('#due').val(mainBalance);
+            $('#balance').val(0);
+
+        }
+
+ 
+
         // Saving Data
         $.ajax({
                     url : urlHeader+'/api/admin/postPurchaseProductDetails/save',
@@ -932,6 +954,7 @@ $.ajax({
         statePayment = 0.0;
         $('#totalPayment').val(final_total_amount);
 
+ 
 
         let pro_id = 0;
         var added_qty = 0.0;
@@ -940,6 +963,8 @@ $.ajax({
         var getting_stock = 0.0;
         var stock_id = 0;
         var new_stock = 0.0;
+
+
 
 
         //Getting Product Id From This Table
@@ -998,6 +1023,24 @@ $.ajax({
 
 
         if(confirm("Are You sure want to delete !")) {
+
+
+
+            var removedTotal = parseFloat(totalidvalue);
+            mainBalance = mainBalance+removedTotal;
+            if (mainBalance>=0) {
+                $('#balance').val(mainBalance);
+                $('#due').val(0);
+            }
+            else{
+                $('#due').val(mainBalance);
+                $('#balance').val(0);
+
+            }
+
+
+            
+
         $.ajax({
             type: "DELETE",
             url: urlHeader+'/api/admin/deleteTempSaleProduct/delete/'+temproid,

@@ -83,10 +83,9 @@ Sale Product
                                 <tr>
                                     <th scope="row">Dealer</th>
                                     <td>
+                                        
                                     <select class="form-control select2 select2-info" style="width:100%;" id="dealers" name="dealers">
-                                        @foreach ($dealers as $dealer)
-                                            <option selected value="{{ $dealer->id }}">{{ $dealer->name }}</option>
-                                        @endforeach
+                                        <option selected value="{{ $dealers[0]->id }}">{{ $dealers[0]->name }}</option>
                                     </select>
                                     </td>
                                 </tr>
@@ -129,15 +128,16 @@ Sale Product
                                 </tr>
                                 <tr>
                                     <th scope="row">Balance</th>
+                                    <input type="number" class="d-none" id="mainBalance" value="{{ $balancedue[0]->balance }}">
                                     <td>
                                     @if ($balanceduecount>0)
                                     @if ($balancedue[0]->balance>=0)
-                                    <input  class="form-control" type="text" id="balance" Readonly value="{{ $balancedue[0]->balance }}" placeholder="Balance Amount">
+                                    <input  class="form-control" type="number" id="balance" Readonly value="{{ $balancedue[0]->balance }}" placeholder="Balance Amount">
                                     @else
-                                    <input  class="form-control" type="text" id="balance" Readonly value="0" placeholder="Balance Amount">
+                                    <input  class="form-control" type="number" id="balance" Readonly value="0" placeholder="Balance Amount">
                                     @endif
                                     @else
-                                    <input  class="form-control" type="text" id="balance" Readonly value="0" placeholder="Balance Amount">
+                                    <input  class="form-control" type="number" id="balance" Readonly value="0" placeholder="Balance Amount">
                                     @endif
                                     </td>
                                 </tr>
@@ -146,12 +146,12 @@ Sale Product
                                     <td>
                                     @if ($balanceduecount>0)
                                         @if ($balancedue[0]->balance<0)
-                                        <input  class="form-control" type="text" id="due" value="{{ $balancedue[0]->balance-$balancedue[0]->balance-$balancedue[0]->balance }}" Readonly placeholder="Due Amount">
+                                        <input  class="form-control" type="number" id="due" value="{{ $balancedue[0]->balance-$balancedue[0]->balance-$balancedue[0]->balance }}" Readonly placeholder="Due Amount">
                                         @else
-                                        <input  class="form-control" type="text" id="due" value="0" Readonly placeholder="Due Amount">
+                                        <input  class="form-control" type="number" id="due" value="0" Readonly placeholder="Due Amount">
                                         @endif
                                     @else
-                                    <input  class="form-control" type="text" id="due" value="0" Readonly placeholder="Due Amount">
+                                    <input  class="form-control" type="number" id="due" value="0" Readonly placeholder="Due Amount">
                                     @endif
                                     </td>
                                 </tr>
@@ -372,11 +372,15 @@ var saleDate = null;
 var mycartdisplay = true;
 var latestsavedID = 0;
 var free = 0.0;
+var mainBalance = 0.0;
 var productselected = false;
 var stock = 0.0;
 var fullData = [
     {saleDate:saleDate, stateDealerID:stateDealerID, stateDealerMobile:stateDealerMobile, stateTotalAmount:stateTotalAmount, statetotalPayment:statetotalPayment  }
 ];
+
+mainBalance = $('#mainBalance').val();
+mainBalance=parseFloat(mainBalance);
 
 
 
@@ -831,14 +835,31 @@ $.ajax({
 
 
     if(product_id>0 && qty>0 && can_add==true){
-        if (mycartdisplay==true) {
-            mycartdisplay =false;
-            $('#mycart').addClass('d-none');
+        if (mycartdisplay==false) {
+            mycartdisplay =true;
+            $('#mycart').removeClass('d-none');
         }
         var totalPayment = 0.0;
         totalPayment = $('#totalPayment').val(totalPayment);
         $('#totalPayment').addClass("payablesuccess");
         $('#payment').val("0");
+
+
+        var addedTotal = parseFloat(total);
+        mainBalance = mainBalance+addedTotal;
+
+
+        if (mainBalance>=0) {
+            $('#balance').val(mainBalance);
+            $('#due').val(0);
+
+        }
+        else{
+
+            $('#due').val(mainBalance);
+            $('#balance').val(0);
+
+        }
 
         // Saving Data
         $.ajax({
@@ -872,6 +893,8 @@ $.ajax({
                         user+='</tr>';
                         $('#showtempproduct').prepend(user);
 
+
+                        
 
 
 
@@ -1002,6 +1025,20 @@ $.ajax({
 
 
         if(confirm("Are You sure want to delete !")) {
+
+
+            var removedTotal = parseFloat(totalidvalue);
+            mainBalance = mainBalance-removedTotal;
+            if (mainBalance>=0) {
+                $('#balance').val(mainBalance);
+                $('#due').val(0);
+            }
+            else{
+                $('#due').val(mainBalance);
+                $('#balance').val(0);
+
+            }
+
         $.ajax({
             type: "DELETE",
             url: urlHeader+'/api/admin/deleteTempSaleProduct/delete/'+temproid,
@@ -1052,10 +1089,7 @@ $.ajax({
 saleDate = $('#saleDate').val();
 
 
-var dealer_id;
-$('select[name="dealers"]').on('change', function(){
-    dealer_id = $(this).val();
- });
+dealer_id = $('select[name="dealers"]').val();
 
 
 var showroom_id;
@@ -1077,7 +1111,7 @@ $('#finalSubmit').on('click', function(){
 
     var total_Payment = $('#totalPayment').val();
     total_Payment = parseFloat(total_Payment);
-
+    console.log(dealer_id);
 
     if (saleDate!= null && dealer_id>0 && showroom_id>0 && total_Payment>0) {
         data=true;

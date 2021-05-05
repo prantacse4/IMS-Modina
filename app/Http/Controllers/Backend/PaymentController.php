@@ -175,4 +175,18 @@ class PaymentController extends Controller
         $payment->delete();
         return redirect(route('admin.dealerviewallpayments'))->with('message','Deleted Successfully');
     }
+
+
+    public function editdealerbalance($id)
+    {
+        $dealers = Dealer::all();
+        $dealerbalance = BalanceDealer::where('id', $id)->get();
+        return view('admin.pages.payment.by_dealer.editbalance', compact('dealerbalance', 'dealers'));
+    }
+
+    public function updatedealerbalance(Request $request, BalanceDealer $dealerbalance)
+    {
+        $dealerbalance->update($request->all());
+        return redirect(route('admin.dealerpayment'))->with('message', 'Updated Successfully!');
+    }
 }

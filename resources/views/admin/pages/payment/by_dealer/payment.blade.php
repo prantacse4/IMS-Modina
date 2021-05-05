@@ -125,7 +125,7 @@
                                                 <td>
 
 
-                                                    <a href="{{ route('admin.editbalance',$balancedealer->id) }}" class="btn btn-info acbtn2">
+                                                    <a href="{{ route('admin.editdealerbalance',$balancedealer->id) }}" class="btn btn-info acbtn2">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
 

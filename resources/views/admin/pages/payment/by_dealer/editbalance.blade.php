@@ -1,4 +1,4 @@
-@extends('admin.pages.payment.to_company.layouts.paymentlayout')
+@extends('admin.pages.payment.by_dealer.layouts.paymentlayout')
 
 @section('pagename')
     Update Payment
@@ -9,7 +9,7 @@
 
 
 @section('paymentsidebar')
-@include('admin.pages.payment.to_company.sidebar.paymentsidebar')
+@include('admin.pages.payment.by_dealer.sidebar.paymentsidebar')
 @endsection
 
 
@@ -35,7 +35,7 @@
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('admin.payment') }}">Payment</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('admin.dealerpayment') }}">Payment</a></li>
                                 <li class="breadcrumb-item active">Update Balance</li>
                             </ol>
                         </div>
@@ -69,7 +69,7 @@
                                         </div>
                                         <!-- /.card-header -->
                                         <!-- form start -->
-                                        <form  class="form-horizontal" action="{{ route('admin.updatebalance.update',$balance[0]->id) }}" method="POST" >
+                                        <form  class="form-horizontal" action="{{ route('admin.updatedealerbalance.update',$dealerbalance[0]->id) }}" method="POST" >
                                             @csrf
                                             @method('PUT')
                                             <div class="card-body">
@@ -77,14 +77,14 @@
 
 
                                             <div class="form-group row">
-                                                <label  class="col-sm-2 col-form-label">Company</label>
+                                                <label  class="col-sm-2 col-form-label">Dealer</label>
                                                 <div class="col-sm-6">
-                                                    @foreach ($companies as $company)
-                                                        @if ($balance[0]->com_id == $company->id)
-                                                        <input  type="text"  value="{{ $company->com_name }}" class="form-control"  readonly>
+                                                    @foreach ($dealers  as $dealer)
+                                                        @if ($dealerbalance[0]->dealer_id == $dealer->id)
+                                                        <input  type="text"  value="{{ $dealer->name }}" class="form-control"  readonly>
                                                         @endif
                                                     @endforeach
-                                                    <input type="number" class="hidden" value="{{ $balance[0]->com_id }}" name="com_id" readonly>
+                                                    <input type="number" class="hidden" value="{{ $dealerbalance[0]->dealer_id }}" name="dealer_id" readonly>
 
                                                 </div>
                                             </div>
@@ -97,7 +97,7 @@
 
                                                 <label  class="col-sm-2 col-form-label">Balance</label>
                                                 <div class="col-sm-6">
-                                                <input type="number" name="balance" value="{{ $balance[0]->balance }}"  class="form-control" placeholder="Balance" required>
+                                                <input type="number" name="balance" value="{{ $dealerbalance[0]->balance }}"  class="form-control" placeholder="Balance" required>
                                                 </div>
                                             </div>
 
@@ -111,7 +111,7 @@
                                                 <div class="col-sm-4">
                                                 <button type="submit" name="submit2" class="btn btn-success btn-2">Update</button>
                                                 <button type="reset" class="btn btn-danger btn-2">Reset</button>
-                                                <a class="btn btn-info " href="{{ route('admin.payment') }}">Go Back</a>
+                                                <a class="btn btn-info " href="{{ route('admin.dealerpayment') }}">Go Back</a>
                                                 </div>
                                             </div>
                                             </div>

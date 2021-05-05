@@ -119,8 +119,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/dealer/payment/add/store', [PaymentController::class, 'dealerstore'])->name('admin.dealeraddpayment.store');
     // Route::delete('/payment/delete/{payment}', [PaymentController::class, 'delete'])->name('admin.deletepayment');
     Route::get('/dealer/payment/view/{id}', [PaymentController::class, 'dealerpaymentviewer'])->name('admin.dealerpaymentviewer');
-    // Route::get('/balance/edit/{id}', [PaymentController::class, 'editbalance'])->name('admin.editbalance');
-    // Route::put('/balance/update/{balance}', [PaymentController::class, 'updatebalance'])->name('admin.updatebalance.update');
+    Route::get('/dealer/balance/edit/{id}', [PaymentController::class, 'editdealerbalance'])->name('admin.editdealerbalance');
+    Route::put('/dealer/balance/update/{dealerbalance}', [PaymentController::class, 'updatedealerbalance'])->name('admin.updatedealerbalance.update');
     Route::get('/dealer/payment/viewallpayments', [PaymentController::class, 'dealerviewallpayments'])->name('admin.dealerviewallpayments');
     Route::delete('/dealer/payment/delete/history/{payment}', [PaymentController::class, 'dealerdeletepaymenthistory'])->name('admin.dealerdeletepaymenthistory');
 
