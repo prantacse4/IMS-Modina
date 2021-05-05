@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-class CreateChangeCompanyBalanceTrigger extends Migration
+class CreateTriggerBalanceChangeAfterSale extends Migration
 {
     /**
      * Run the migrations.
@@ -15,13 +15,13 @@ class CreateChangeCompanyBalanceTrigger extends Migration
     public function up()
     {
         DB::unprepared('
-        CREATE TRIGGER `balanceChangeCompany` AFTER INSERT ON `save_sale_records`
-        FOR EACH ROW update balance_dues
+        CREATE TRIGGER `balanceChangeDealer` AFTER INSERT ON `save_sale_records`
+        FOR EACH ROW update balance_dealers
         set balance=balance+NEW.total_amount
-        where com_id=NEW.company
-        ');
-
+        where dealer_id=NEW.dealer
+        '); 
     }
+
 
     /**
      * Reverse the migrations.
