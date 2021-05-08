@@ -1,5 +1,9 @@
+:root{
+    --hcolor:#4d6a90;
+}
 #invoice{
     padding: 30px;
+    font-family: Times New Roman;
 }
 a:hover{
     text-decoration: none;
@@ -12,26 +16,44 @@ a{
     position: relative;
     background-color: #FFF;
     min-height: 680px;
-    padding: 15px
-}
+    padding: 15px;
+    padding-top: 0;
+    margin-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    font-family: Roboto;
 
+}
 .invoice header {
-    padding: 10px 0;
+    padding: 0px;
     margin-bottom: 20px;
     border-bottom: 1px solid #3989c6
 }
 
-.invoice .company-details {
-    text-align: right
+
+
+.invheader h1 {
+    margin-bottom: 0rem;
+    font-size: 1.8rem;
+    color:var(--hcolor);
 }
 
+.invoice .company-details {
+    text-align: right;
+    margin-bottom: .6rem;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
 .invoice .company-details .name {
     margin-top: 0;
-    margin-bottom: 0
+    margin-bottom: 0;
+    color: var(--hcolor);
 }
 
 .invoice .contacts {
-    margin-bottom: 20px
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .invoice .invoice-to {
@@ -73,23 +95,31 @@ a{
     margin-bottom: 20px
 }
 
-.invoice table td,.invoice table th {
-    padding: 15px;
+.invoice table td, .invoice table th {
+    padding: 0.2rem .8rem;
     background: #eee;
-    border-bottom: 1px solid #fff
+    border-bottom: 1px solid #d0d0d0;
 }
 
 .invoice table th {
     white-space: nowrap;
-    font-weight: 400;
-    font-size: 16px
+    font-size: 1rem;
+    text-align: right;
+    background: var(--hcolor);
+    color: white;
+}
+.invoice table td{
+    text-align: right;
+}
+.theader{
+    text-align: left !important;
+
+
 }
 
-.invoice table td h3 {
-    margin: 0;
-    font-weight: 400;
-    color: #3989c6;
-    font-size: 1.2em
+.theader {
+    font-weight: 600;
+    color: var(--hcolor);
 }
 
 .invoice table .qty,.invoice table .total,.invoice table .unit {
@@ -108,8 +138,8 @@ a{
 }
 
 .invoice table .total {
-    background: #3989c6;
-    color: #fff
+    background: #dadada;
+    color: #000;
 }
 
 .invoice table tbody tr:last-child td {
@@ -131,11 +161,9 @@ a{
 }
 
 .invoice table tfoot tr:last-child td {
-    color: #3989c6;
-    font-size: 1.4em;
-    border-top: 1px solid #3989c6
+    color: #000000;
+    font-size: 1.2em;
 }
-
 .invoice table tfoot tr td:first-child {
     border: none
 }
@@ -167,4 +195,43 @@ a{
     .invoice>div:last-child {
         page-break-before: auto
     }
+}
+
+.invheader h1 {
+    font-family: none;
+    font-weight: 700;
+}
+.invoice_to p {
+    margin: 0;
+    line-height: 1.3rem;
+    font-size: 1rem;
+}
+.invoice-to h3 {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5rem;
+}
+
+.contacts h3{
+        margin: 0;
+        padding: 0;
+        line-height: 1.5rem;
+}
+
+.com_details p{
+    margin: 0;
+    line-height: 1.3rem;
+    font-size: 1rem;
+
+}
+
+.showromm_name{
+    font-weight: 500;
+}
+.dealer_name{
+    color: var(--hcolor);
+    font-size: 1.1rem;
+    line-height: 1.4rem;
+    margin: 0;
+    padding: 0;
 }

@@ -21,28 +21,27 @@
         <div style="min-width: 600px">
             <header>
                 <div class="row">
-                    <div class="col">
-                        <a target="_blank" href="#">
-                            <h1><b>MODINA</b></h1>
-                            </a>
+                    <div class="col invheader">
+                            <h1>MODINA</h1>
                     </div>
                     <div class="col company-details">
                         @foreach ($sale_records as $sale)
                         @foreach ($companies as $company)
                         @if ($sale->company == $company->id )
-                        <h2 class="name">
-                            <a target="_blank" href="#">
+                        <h4 class="name">
                                 {{ $company->com_name }}
-                            </a>
-                        </h2>
-                        @foreach ($showrooms as $showroom)
-                        @if ($sale->showroom == $showroom->id )
-                        <h5 class="name">{{ $showroom->name }}</h5>
-                        @endif
-                        @endforeach
-                        <div>{{ $company->com_address }}</div>
-                        <div>{{ $company->com_phone }}</div>
-                        <div>{{ $company->com_email }}</div>
+                        </h4>
+
+                        <div class="com_details">
+                            @foreach ($showrooms as $showroom)
+                            @if ($sale->showroom == $showroom->id )
+                            <p class="showromm_name">{{ $showroom->name }} Showroom</p>
+                            @endif
+                            @endforeach
+                            <p>{{ $company->com_address }}</p>
+                            <p>{{ $company->com_phone }}</p>
+                            <p>{{ $company->com_email }}</p>
+                        </div>
                         @endif
                         @endforeach
                         @endforeach
@@ -52,36 +51,49 @@
             <main>
 
                 <div class="row contacts">
-                    <div class="col invoice-to">
-                        <div class="text-gray-light">INVOICE TO:</div>
+                    <div class="col-6 invoice-to text-left">
+                        <div class="text-gray-light"><h5>INVOICE TO:</h5></div>
 
                         @foreach ($sale_records as $sale)
                         @foreach ($dealers as $dealer)
                         @if ($sale->dealer == $dealer->id )
-                        <h2 class="to">{{ $dealer->name }}</h2>
-                        <div class="address">{{ $dealer->address }}</div>
-                        <div class="email"><a href="mailto:john@example.com">{{ $dealer->phone }}</a></div>
+                        <h6 class="dealer_name">Dealer: {{ $dealer->name }}</h6>
+                        <div class="invoice_to">
+                            <p>Address: {{ $dealer->address }}</p>
+                            <p>Phone: {{ $dealer->phone }}</p>
+                            @foreach ($companies as $company)
+                            @if ($sale->company == $company->id )
+                            <p>Company: {{ $company->com_name }}</p>
+                            @endif
+                            @endforeach
+                        </div>
+                        
+                        
                         @endif
                         @endforeach
                         @endforeach
 
                     </div>
-                    <div class="col invoice-details">
-                        <h3>Invoice Date</h3>
+                    <div class="col-6 invoice-details text-right">
+                        <div class="text-gray-light"><h5>INVOICE DATE</h5></div>
                         <div class="date">Date of Invoice: {{Carbon\Carbon::now()->format('Y-m-d')." Time: ".Carbon\Carbon::now()->format('H:i')}}</div>
                         @foreach ($sale_records as $sale)
                         <div class="date">Sale Date: {{ $sale->date }}</div>
                         @endforeach
                     </div>
                 </div>
-                <table border="0" cellspacing="0" cellpadding="0">
+
+              
+
+                <table  border="0" cellspacing="0" cellpadding="0">
                     <thead>
                         <tr>
                             <th class="text-left">Product</th>
-                            <th class="text-right">Qty</th>
-                            <th class="text-right">Free</th>
-                            <th class="text-right">Price</th>
-                            <th class="text-right">Total</th>
+                            <th>Qty</th>
+                            <th>Free</th>
+                            <th>Price</th>
+                            <th>Free Amount</th>
+                            <th>Total</th>
                         </tr>
                     </thead>
 
@@ -92,18 +104,17 @@
                         @foreach ($products as $product)
                         @if ($sold->product_id == $product->id )
                         <tr>
-                            <td class="text-left"><h3>
-                                <a target="_blank" href="https://www.youtube.com/channel/UC_UMEcP_kF0z4E6KbxCpV1w">
+                            <td class="theader">
                                     {{ $sold->product_name }}
-                                </a>
-                                </h3>
-                                Product Code: {{ $product->pro_code }}
                             </td>
-                            <td class="unit">x {{ $sold->qty }} {{ $product->qty_type }}</td>
-                            <td class="qty"> x {{ $sold->free }} {{ $product->qty_type }}</td>
-                            <td class="total">{{ $sold->pro_sell }} TAKA</td>
-                            <td class="total">{{ $sold->total }} TAKA</td>
+                            <td>{{ $sold->qty }} {{ $product->qty_type }}</td>
+                            <td>{{ $sold->free }} {{ $product->qty_type }}</td>
+                            <td>{{ $sold->pro_sell }} TAKA</td>
+                            <td>{{ $sold->free*$sold->pro_sell }} Taka</td>
+                            <td class="total">{{ $sold->total }} Taka</td>
                         </tr>
+
+                        
 
                         @endif
                         @endforeach
@@ -112,19 +123,16 @@
                     </tbody>
                     <tfoot>
                         @foreach ($sale_records as $sale)
-                        <tr>
-                            <td colspan="2"></td>
-                            <td colspan="2">TOTAL</td>
-                            <td>{{ $sale->total_amount }} TAKA</td>
-                        </tr>
+                            <tr>
+                                <td colspan="4"></td>
+                                <td colspan="1"><b>TOTAL</b></td>
+                                <td><b>{{ $sale->total_amount }} TAKA</b></td>
+                            </tr>
                         @endforeach
                     </tfoot>
+                    
                 </table>
-                <hr>
-                <div class="notices">
-                    <div>NOTICE:</div>
-                    <div class="notice">Please recheck the data!</div>
-                </div>
+                
             </main>
             <footer>
                 Greetings from Modina
