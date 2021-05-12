@@ -83,7 +83,6 @@
                                             <tr>
                                                 <th>Purchase ID</th>
                                                 <th>Company</th>
-                                                <th>Dealer</th>
                                                 <th>Showroom</th>
                                                 <th>Total</th>
                                                 <td>Actions</td>

@@ -410,7 +410,7 @@ $.ajax({
                     type: "delete",
                     dataType: "json",
                     success: function (response) {
-
+                        
                     }
                 });
             });
@@ -723,7 +723,7 @@ $.ajax({
                 free = parseFloat(free);
                 qty = parseFloat(qty);
                 stockvalue = parseFloat(stockvalue);
-                    if(stockvalue<1){
+                    if(stockvalue<0){
                         can_add = false;
                         $('#qty').addClass("danger_input");
                         $('#free').addClass("danger_input");
@@ -967,6 +967,21 @@ $.ajax({
 
 
 
+
+
+
+
+
+
+
+
+
+        if(confirm("Are You sure want to delete !")) {
+
+
+
+
+
         //Getting Product Id From This Table
         $.ajax({
             url: urlHeader+"/admin/getTempPurProductID/"+temproid,
@@ -1015,17 +1030,6 @@ $.ajax({
 
 
 
-
-
-
-
-
-
-
-        if(confirm("Are You sure want to delete !")) {
-
-
-
             var removedTotal = parseFloat(totalidvalue);
             mainBalance = mainBalance+removedTotal;
             if (mainBalance>=0) {
@@ -1043,7 +1047,7 @@ $.ajax({
 
         $.ajax({
             type: "DELETE",
-            url: urlHeader+'/api/admin/deleteTempSaleProduct/delete/'+temproid,
+            url: urlHeader+'/api/admin/deleteTempPurchaseProduct/delete/'+temproid,
             success: function (data) {
                 $("#tempproductid_" + temproid).remove();
                 var totalDiscount = 0.0;
@@ -1078,7 +1082,6 @@ $.ajax({
         url: urlHeader+"/admin/getLatestSavedIDPurchase",
         type: "GET",
         dataType: "json",
-        async: false,
         success: function (data) {
             if (data) {
                 latestsavedID = parseInt(data.id);
@@ -1118,18 +1121,17 @@ $('#finalSubmit').on('click', function(){
     total_Payment = parseFloat(total_Payment);
 
 
-    if (purchaseDate!= null && dealer_id>0 && showroom_id>0 && total_Payment>0) {
+    if (purchaseDate!= null && com_id>0 && showroom_id>0 && total_Payment>0) {
         data=true;
     }
 
     if (data==false) {
         alert("Can Not Submit Data");
     }
-
     else {
         var save_fullData = {date:purchaseDate, company:com_id, showroom:showroom_id, total_amount:total_Payment };
     // Saving Data
-    if (data==true) {
+    
         $.ajax({
             url : urlHeader+'/api/admin/savePurchaseRecords/save',
             type : "POST",
@@ -1140,7 +1142,6 @@ $('#finalSubmit').on('click', function(){
             }
 
             });
-    }
 
 
 
@@ -1177,7 +1178,7 @@ $('#finalSubmit').on('click', function(){
                             total:total,
                         },
                         success: function (response) {
-
+                            alert('Thanks For Purchasing!');
                             window.location.replace(urlHeader+"/admin/purchase");
 
 

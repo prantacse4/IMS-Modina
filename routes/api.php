@@ -38,7 +38,7 @@ Route::post('/admin/updateStockAfterDelete', [TempProductStockController::class,
 
 Route::delete('/admin/purchasecondition/delete/{id}', [PurchaseProductController::class, 'getPurchaseconditiondelete']);
 Route::post('/post/purchase/condition', [PurchaseProductController::class, 'purchasecondition'])->name('admin.purchasecondition.save');
-Route::delete('/admin/getTempPurchaseProduct/delete/{id}', [PurchaseProductController::class, 'getTempPurchaseProduct']);
+Route::delete('/admin/getTempPurchaseProduct/delete/{id}', [PurchaseProductController::class, 'getTempPurchaseProductDelete']);
 Route::delete('/admin/getTempPStockProduct/delete/{id}', [TempPPStockController::class, 'getTempPStockProductDelete']);
 Route::post('/admin/postPurchaseProductDetails/save', [PurchaseProductController::class, 'postPurchaseProductDetails']);
 Route::post('/admin/saveorupdate/Pstock', [TempPPStockController::class, 'saveorupdatePStock']);

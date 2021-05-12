@@ -16,8 +16,7 @@ class CreateTriggerBalanceChangeAfterSale extends Migration
     {
         DB::unprepared('
         CREATE TRIGGER `balanceChangeDealer` AFTER INSERT ON `save_sale_records`
-        FOR EACH ROW update balance_dealers
-        set balance=balance+NEW.total_amount
+        FOR EACH ROW update balance_dealers set balance=balance-NEW.total_amount
         where dealer_id=NEW.dealer
         '); 
     }

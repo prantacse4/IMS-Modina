@@ -88,6 +88,8 @@ class PurchaseProductController extends Controller
         return  json_encode($gettemps);
     }
 
+    
+
     public function getTempPurchaseProductDelete($id)
     {
         $SaleProductTempID = PurchaseProductTemp::find($id);

@@ -846,7 +846,7 @@ $.ajax({
 
 
         var addedTotal = parseFloat(total);
-        mainBalance = mainBalance+addedTotal;
+        mainBalance = mainBalance-addedTotal;
 
 
         if (mainBalance>=0) {
@@ -953,7 +953,7 @@ $.ajax({
         var totalidvalue = $(''+totalid+'').text();
         totalidvalue = parseFloat(totalidvalue);
         get_f_total_amount_del = $('#totalPayment').val();
-        final_total_amount = get_f_total_amount_del - totalidvalue;
+        final_total_amount = get_f_total_amount_del + totalidvalue;
         statetotalPayment = final_total_amount;
         stateTotalAmount = final_total_amount;
         statePayment = 0.0;

@@ -17,7 +17,6 @@ class CreateSavePurchaseRecordsTable extends Migration
             $table->id();
             $table->string('date');
             $table->unsignedBigInteger('company');
-            $table->unsignedBigInteger('dealer');
             $table->unsignedBigInteger('showroom');
             $table->double('total_amount');
             $table->timestamps();
