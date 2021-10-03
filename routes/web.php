@@ -17,6 +17,7 @@ use App\Http\Controllers\Backend\SaveSaleRecordsController;
 use App\Http\Controllers\Backend\SavePurchaseRecordsController;
 use App\Http\Controllers\Backend\ShowroomController;
 use App\Http\Controllers\Backend\TempPPStockController;
+use App\Http\Controllers\Backend\TempPSaleStockController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\Routing\Route as RoutingRoute;
@@ -176,7 +177,12 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/getAllSaleCategory', [SaleProductController::class, 'getAllSaleCategory'])->name('getAllSaleCategory');
     Route::get('/getAllSaleProductDetails/{id}', [SaleProductController::class, 'getAllSaleProductDetails'])->name('getAllSaleProductDetails');
     Route::get('/getTempSaleProduct', [SaleProductController::class, 'getTempSaleProduct'])->name('getTempSaleProduct');
-
+    Route::get('/getTempSaleProductID/{id}', [SaleProductController::class, 'getTempSaleProductID'])->name('getTempSaleProductID');
+    
+    Route::get('/getPSStockfromStockTemp/{id}', [TempPSaleStockController::class, 'getPSStockfromStockTemp'])->name('getPSStockfromStockTemp');
+    Route::get('/getTempPSStockProduct', [TempPSaleStockController::class, 'getTempPSStockProduct'])->name('getTempPSStockProduct');
+    Route::get('/getTempPSStockProduct', [TempPSaleStockController::class, 'getTempPSStockProduct'])->name('getTempPSStockProduct');
+   
 
     Route::get('/getTempProductID/{id}', [SaleProductController::class, 'getTempProductID'])->name('getTempProductID');
     Route::get('/getStockfromStockTemp/{id}', [TempProductStockController::class, 'getStockfromStockTemp'])->name('getStockfromStockTemp');

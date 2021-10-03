@@ -434,7 +434,7 @@ var deletestatus =false;
 if(deletestatus == false){
 deletestatus =true;
 $.ajax({
-        url : '/admin/getTempStockProduct',
+        url : '/admin/getTempPSStockProduct',
         type : "GET",
         dataType : "json",
         success:function(data)
@@ -445,7 +445,7 @@ $.ajax({
                 $('#stocknotify').addClass('d-none');
                 // Delete
                 $.ajax({
-                    url: urlHeader+'/api/admin/getTempStockProduct/delete/'+database_id,
+                    url: urlHeader+'/api/admin/getTempPSStockProduct/delete/'+database_id,
                     type: "delete",
                     dataType: "json",
                     success: function (response) {
@@ -661,7 +661,7 @@ $.ajax({
             //setting
             $.ajax({
             type: "GET",
-            url : '/admin/getTempStockProduct',
+            url : '/admin/getTempPSStockProduct',
             dataType: "json",
             success: function (data) {
                 $.each(data,function (key,value) {
@@ -877,7 +877,7 @@ $.ajax({
                     success:function(data)
                     {
                         var parsedouble = parseFloat(total);
-                        final_total_amount = final_total_amount + parsedouble;
+                        final_total_amount = parseFloat(final_total_amount) + parsedouble;
                         stateTotalAmount = final_total_amount;
                         statetotalPayment = final_total_amount;
                         $('#totalPayment').val(final_total_amount);
@@ -914,7 +914,7 @@ $.ajax({
             product_id = product_id;
             $.ajax({
                     type: "POST",
-                    url: urlHeader+"/api/admin/saveorupdate/stock",
+                    url: urlHeader+"/api/admin/saveorupdatepss/stock",
                     data:{
                         product_id: product_id,
                         stock:currentstock
@@ -953,7 +953,7 @@ $.ajax({
         var totalidvalue = $(''+totalid+'').text();
         totalidvalue = parseFloat(totalidvalue);
         get_f_total_amount_del = $('#totalPayment').val();
-        final_total_amount = get_f_total_amount_del + totalidvalue;
+        final_total_amount = parseFloat(get_f_total_amount_del) - totalidvalue;
         statetotalPayment = final_total_amount;
         stateTotalAmount = final_total_amount;
         statePayment = 0.0;
@@ -984,7 +984,7 @@ $.ajax({
                 //Getting Stock Value of That Product Id
                 $.ajax({
                     type: "GET",
-                    url: urlHeader+"/admin/getStockfromStockTemp/"+pro_id,
+                    url: urlHeader+"/admin/getPSStockfromStockTemp/"+pro_id,
                     dataType: "json",
                     success: function (data) {
                         getting_stock = data[0].stock;
@@ -994,7 +994,7 @@ $.ajax({
                         //Update Stock Value of That Product
                         $.ajax({
                             type: "POST",
-                            url: urlHeader+"/api/admin/updateStockAfterDelete",
+                            url: urlHeader+"/api/admin/updatePSStockAfterDelete",
                             data: {
                                 product_id:pro_id,
                                 stock: new_stock,
@@ -1023,38 +1023,90 @@ $.ajax({
 
 
 
-
-        if(confirm("Are You sure want to delete !")) {
-
-
-            var removedTotal = parseFloat(totalidvalue);
-            mainBalance = mainBalance-removedTotal;
-            if (mainBalance>=0) {
-                $('#balance').val(mainBalance);
-                $('#due').val(0);
-            }
-            else{
-                $('#due').val(mainBalance);
-                $('#balance').val(0);
-
-            }
-
-        $.ajax({
-            type: "DELETE",
-            url: urlHeader+'/api/admin/deleteTempSaleProduct/delete/'+temproid,
-            success: function (data) {
-                $("#tempproductid_" + temproid).remove();
-                var totalDiscount = 0.0;
+    if(confirm("Are You sure want to delete !")) {
 
 
-            },
-            error: function (data) {
-                console.log('Error:', data);
-            }
-        });
 
+    //Getting Product Id From This Table
+    $.ajax({
+        url: urlHeader+"/admin/getTempSaleProductID/"+temproid,
+        type: "GET",
+        dataType: "json",
+        success: function (data) {
+            pro_id = data[0].product_id;
+            added_qty = data[0].qty;
+            added_free = data[0].free;
+            total_added_qty = added_qty+added_free;
+
+
+            //Getting Stock Value of That Product Id
+            $.ajax({
+                type: "GET",
+                url: urlHeader+"/admin/getPSStockfromStockTemp/"+pro_id,
+                dataType: "json",
+                success: function (data) {
+                    getting_stock = data[0].stock;
+                    stock_id = data[0].id;
+                    new_stock = getting_stock+total_added_qty;
+
+                    //Update Stock Value of That Product
+                    $.ajax({
+                        type: "POST",
+                        url: urlHeader+"/api/admin/updatePSStockAfterDelete",
+                        data: {
+                            product_id:pro_id,
+                            stock: new_stock,
+                            stock_id:stock_id
+                        },
+                        dataType: "json",
+                        success: function (response) {
+                            $('#stock').val(new_stock);
+                            $('#stocknotify').val("Stock: "+new_stock);
+                        }
+
+                    });
+
+                }
+            });
+
+
+        }
+    });
+
+
+
+    var removedTotal = parseFloat(totalidvalue);
+    mainBalance = mainBalance+removedTotal;
+    if (mainBalance>=0) {
+        $('#balance').val(mainBalance);
+        $('#due').val(0);
+    }
+    else{
+        $('#due').val(mainBalance);
+        $('#balance').val(0);
 
     }
+
+
+    
+
+$.ajax({
+    type: "DELETE",
+    url: urlHeader+'/api/admin/deleteTempPurchaseProduct/delete/'+temproid,
+    success: function (data) {
+        $("#tempproductid_" + temproid).remove();
+        var totalDiscount = 0.0;
+
+
+    },
+    error: function (data) {
+        console.log('Error:', data);
+    }
+});
+
+
+}
+
     });
 
 

@@ -851,7 +851,7 @@ $.ajax({
 
         }
         else{
-            $('#due').val(mainBalance);
+            $('#due').val((mainBalance)*(-1));
             $('#balance').val(0);
 
         }
@@ -1037,7 +1037,7 @@ $.ajax({
                 $('#due').val(0);
             }
             else{
-                $('#due').val(mainBalance);
+                $('#due').val((mainBalance)*(-1));
                 $('#balance').val(0);
 
             }

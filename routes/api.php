@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\SaveSaleRecordsController;
 use App\Http\Controllers\Backend\SoldProductController;
 use App\Http\Controllers\Backend\TempPPStockController;
 use App\Http\Controllers\Backend\TempProductStockController;
+use App\Http\Controllers\Backend\TempPSaleStockController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +36,13 @@ Route::delete('/admin/getTempStockProduct/delete/{id}', [TempProductStockControl
 Route::delete('/admin/salecondition/delete/{id}', [SaleProductController::class, 'getSaleconditiondelete']);
 Route::post('/admin/saveorupdate/stock', [TempProductStockController::class, 'saveorupdateStock']);
 Route::post('/admin/updateStockAfterDelete', [TempProductStockController::class, 'updateStockAfterDelete']);
+
+
+Route::post('/admin/updatePSStockAfterDelete', [TempPSaleStockController::class, 'updatePSStockAfterDelete']);
+Route::post('/admin/saveorupdatepss/stock', [TempPSaleStockController::class, 'saveorupdatePSStock']);
+Route::delete('/admin/getTempPSStockProduct/delete/{id}', [TempPSaleStockController::class, 'getTempPSStockProduct']);
+
+
 
 Route::delete('/admin/purchasecondition/delete/{id}', [PurchaseProductController::class, 'getPurchaseconditiondelete']);
 Route::post('/post/purchase/condition', [PurchaseProductController::class, 'purchasecondition'])->name('admin.purchasecondition.save');

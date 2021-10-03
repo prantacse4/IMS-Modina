@@ -154,7 +154,7 @@ class PurchaseProductController extends Controller
     {
         $pro_id = PurchaseProductTemp::where('id',$id)->get();
         return json_encode($pro_id);
-    }
+    } 
 
     public function deleteTempPurchaseProduct($product_id)
     {

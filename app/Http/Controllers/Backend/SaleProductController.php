@@ -156,6 +156,12 @@ class SaleProductController extends Controller
     {
         $gettemps = SaleProductTemp::all();
         return  json_encode($gettemps);
+    } 
+
+    public function getTempSaleProductID($id)
+    {
+        $pro_id = SaleProductTemp::where('id',$id)->get();
+        return json_encode($pro_id);
     }
 
     public function getTempSaleProductDelete($id)
