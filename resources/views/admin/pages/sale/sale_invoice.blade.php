@@ -206,12 +206,12 @@
        </div>
    </div> --}}
 
-    {{-- <script type="text/javascript">
+    <script type="text/javascript">
         window.addEventListener("load", window.print());
          window.onafterprint = function(){
              window.location.href='{{ route("admin.sale") }}';
 
        }
-      </script> --}}
+      </script>
 </body>
 </html>
