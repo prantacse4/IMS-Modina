@@ -229,13 +229,13 @@ with font-awesome or any other icon font library -->
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="#" class="nav-link ">
+                        <a href="{{ route('admin.employee') }}" class="nav-link ">
                             <i class="fa fa-share nav-icon"></i>
                             <p>Employee</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('admin.addemployee') }}" class="nav-link">
                             <i class="fa fa-share nav-icon"></i>
                             <p>Add Employee</p>
                         </a>
@@ -256,19 +256,20 @@ with font-awesome or any other icon font library -->
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="#" class="nav-link ">
+                        <a href="{{ route('admin.salary') }}" class="nav-link ">
                             <i class="fa fa-share nav-icon"></i>
                             <p>Salary</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('admin.addsalary') }}" class="nav-link">
                             <i class="fa fa-share nav-icon"></i>
                             <p>Add Salary</p>
                         </a>
                     </li>
                 </ul>
             </li>
+
 
 
 

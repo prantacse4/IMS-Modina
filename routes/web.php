@@ -5,9 +5,11 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DealerController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\CompanyController;
+use App\Http\Controllers\Backend\EmployeeController;
 use App\Http\Controllers\Backend\PaymentController;
 use App\Http\Controllers\Backend\PurchaseController;
 use App\Http\Controllers\Backend\PurchaseProductController;
+use App\Http\Controllers\Backend\SalaryController;
 use App\Http\Controllers\Backend\SoldProductController;
 use App\Http\Controllers\Backend\TempProductStockController;
 use App\Http\Controllers\Backend\SaleController;
@@ -193,6 +195,24 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/getLatestSavedID', [SaveSaleRecordsController::class, 'getLatestSavedID'])->name('getLatestSavedID');
 
 
+
+    Route::get('/employee', [EmployeeController::class, 'employee'])->name('admin.employee');
+    Route::get('/employee/add', [EmployeeController::class, 'addemployee'])->name('admin.addemployee');
+    Route::post('/employee/add/store', [EmployeeController::class, 'store'])->name('admin.addemployee.store');
+    Route::delete('/employee/delete/{employee}', [EmployeeController::class, 'delete'])->name('admin.deleteemployee');
+    Route::get('/employee/view/{id}', [EmployeeController::class, 'employeeviewer'])->name('admin.employeeviewer');
+    Route::get('/employee/edit/{id}', [EmployeeController::class, 'editemployee'])->name('admin.editemployee');
+    Route::put('/employee/update/{employee}', [EmployeeController::class, 'updateemployee'])->name('admin.updateemployee.update');
+
+
+
+    Route::get('/salary', [SalaryController::class, 'salary'])->name('admin.salary');
+    Route::get('/salary/add', [SalaryController::class, 'addsalary'])->name('admin.addsalary');
+    Route::post('/salary/add/store', [SalaryController::class, 'store'])->name('admin.addsalary.store');
+    Route::delete('/salary/delete/{salary}', [SalaryController::class, 'delete'])->name('admin.deletesalary');
+    Route::get('/salary/view/{id}', [SalaryController::class, 'salaryviewer'])->name('admin.salaryviewer');
+    Route::get('/salary/edit/{id}', [SalaryController::class, 'editsalary'])->name('admin.editsalary');
+    Route::put('/salary/update/{salary}', [SalaryController::class, 'updatesalary'])->name('admin.updatesalary.update');
 
 
 

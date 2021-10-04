@@ -49,7 +49,7 @@ with font-awesome or any other icon font library -->
         </li>
 
 
-        <li class="nav-item has-treeview ">
+        <li class="nav-item has-treeview">
             <a href="#" class="nav-link ">
                 <i class="fas fa-city nav-icon "></i>
                 <p>
@@ -66,7 +66,7 @@ with font-awesome or any other icon font library -->
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('admin.addcompany') }}" class="nav-link ">
+                    <a href="{{ route('admin.addcompany') }}" class="nav-link">
                         <i class="fa fa-share nav-icon"></i>
                         <p>Add Company</p>
                     </a>
@@ -106,8 +106,8 @@ with font-awesome or any other icon font library -->
 
 
 
-            <li class="nav-item has-treeview menu-open">
-                <a href="#" class="nav-link active">
+            <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
                     <i class="fas fa-file-invoice-dollar nav-icon"></i>
                     <p>
                         Payment
@@ -116,14 +116,14 @@ with font-awesome or any other icon font library -->
                 </a>
                 <ul class="nav nav-treeview ">
                     <li class="nav-item">
-                        <a href="{{ route('admin.payment') }}" class="nav-link ">
+                        <a href="{{ route('admin.payment') }}" class="nav-link">
                             <i class="fa fa-share nav-icon"></i>
                             <p>To Company</p>
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('admin.dealerpayment') }}" class="nav-link active">
+                        <a href="{{ route('admin.dealerpayment') }}" class="nav-link ">
                             <i class="fa fa-share nav-icon"></i>
                             <p>By Dealer</p>
                         </a>
@@ -219,8 +219,8 @@ with font-awesome or any other icon font library -->
 
 
 
-            <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
+            <li class="nav-item has-treeview menu-open">
+                <a href="#" class="nav-link active">
                     <i class="fas fa-user-tie nav-icon"></i>
                     <p>
                         Employee
@@ -235,7 +235,7 @@ with font-awesome or any other icon font library -->
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.addemployee') }}" class="nav-link">
+                        <a href="{{ route('admin.addemployee') }}" class="nav-link active">
                             <i class="fa fa-share nav-icon"></i>
                             <p>Add Employee</p>
                         </a>
@@ -269,6 +269,7 @@ with font-awesome or any other icon font library -->
                     </li>
                 </ul>
             </li>
+
 
 
 
