@@ -96,6 +96,13 @@
                                             </div>
 
                                             <div class="form-group row">
+                                                <label f class="col-sm-2 col-form-label">Position</label>
+                                                <div class="col-sm-6">
+                                                <input type="text" name="position" class="form-control" value="{{ $employee[0]->position }}"  required>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
                                                 <label f class="col-sm-2 col-form-label">Phone</label>
                                                 <div class="col-sm-6">
                                                 <input type="text" name="com_phone" class="form-control" value="{{ $employee[0]->phone }}" placeholder="01XXXXXXXXX" required>
