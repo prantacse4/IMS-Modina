@@ -80,25 +80,39 @@
                                             </div>
 
 
+                                            <div class="form-group row">
+                                                <label f class="col-sm-2 col-form-label">ID</label>
+                                                <div class="col-sm-6">
+                                                <input type="text"  class="form-control" value="{{ $employee[0]->employeeid }}" readonly>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group row">
+                                                <label f class="col-sm-2 col-form-label">Salary</label>
+                                                <div class="col-sm-6">
+                                                <input type="text" name="salary" class="form-control" value="{{ $employee[0]->salary }}"  required>
+                                                </div>
+                                            </div>
 
                                             <div class="form-group row">
                                                 <label f class="col-sm-2 col-form-label">Phone</label>
                                                 <div class="col-sm-6">
-                                                <input type="text" name="com_phone" class="form-control" value="{{ $employee[0]->com_phone }}" placeholder="01XXXXXXXXX" required>
+                                                <input type="text" name="com_phone" class="form-control" value="{{ $employee[0]->phone }}" placeholder="01XXXXXXXXX" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group row">
                                                 <label  class="col-sm-2 col-form-label">Email</label>
                                                 <div class="col-sm-6">
-                                                <input type="email" value="{{ $employee[0]->com_email }}" name="com_email" class="form-control" placeholder="xyz@email.com" >
+                                                <input type="email" value="{{ $employee[0]->email }}" name="email" class="form-control" placeholder="xyz@email.com" >
                                                 </div>
                                             </div>
 
                                             <div class="form-group row">
                                                 <label  class="col-sm-2 col-form-label">Address</label>
                                                 <div class="col-sm-6">
-                                                <input id="pro_name" type="text" name="com_address" value="{{ $employee[0]->com_address }}" class="form-control" placeholder="Enter Address" required="">
+                                                <input id="pro_name" type="text" name="com_address" value="{{ $employee[0]->address }}" class="form-control" placeholder="Enter Address" required="">
                                                 </div>
                                             </div>
 
