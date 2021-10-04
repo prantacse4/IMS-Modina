@@ -1092,7 +1092,7 @@ $.ajax({
 
 $.ajax({
     type: "DELETE",
-    url: urlHeader+'/api/admin/deleteTempPurchaseProduct/delete/'+temproid,
+    url: urlHeader+'/api/admin/deleteTempSaleProduct/delete/'+temproid,
     success: function (data) {
         $("#tempproductid_" + temproid).remove();
         var totalDiscount = 0.0;
