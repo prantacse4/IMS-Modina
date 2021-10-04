@@ -112,7 +112,7 @@
                                             <div class="form-group row">
                                                 <label  class="col-sm-2 col-form-label">Address</label>
                                                 <div class="col-sm-6">
-                                                <input id="pro_name" type="text" name="com_address" value="{{ $employee[0]->address }}" class="form-control" placeholder="Enter Address" required="">
+                                                <input  type="text" name="com_address" value="{{ $employee[0]->address }}" class="form-control" placeholder="Enter Address" required="">
                                                 </div>
                                             </div>
 
