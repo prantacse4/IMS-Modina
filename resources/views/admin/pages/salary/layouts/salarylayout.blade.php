@@ -90,7 +90,7 @@
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
 
-        @yield('companysidebar')
+        @yield('salarysidebar')
     </div>
 <!-- /.sidebar -->
 </aside>

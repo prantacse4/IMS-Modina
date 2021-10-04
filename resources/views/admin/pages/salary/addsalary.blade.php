@@ -1,13 +1,13 @@
-@extends('admin.pages.company.layouts.companylayout')
+@extends('admin.pages.salary.layouts.salarylayout')
 
 @section('pagename')
-    Category
+    Salary
 @endsection
 
 
 
-@section('companysidebar')
-@include('admin.pages.company.sidebar.addcompanysidebar')
+@section('salarysidebar')
+@include('admin.pages.salary.sidebar.addsalarysidebar')
 @endsection
 
 
@@ -24,14 +24,14 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Company</h1>
+                            <h1 class="m-0 text-dark">Salary</h1>
                         </div>
                         <!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('admin.company') }}">Company</a></li>
-                                <li class="breadcrumb-item active">Add Company</li>
+                                <li class="breadcrumb-item"><a href="{{ route('admin.salary') }}">Salary</a></li>
+                                <li class="breadcrumb-item active">Add Salary</li>
                             </ol>
                         </div>
                         <!-- /.col -->
@@ -60,21 +60,21 @@
                                     <!-- Horizontal Form -->
                                         <div class="card card-info ">
                                         <div class="card-header">
-                                            <h3 class="card-title">Company Information</h3>
+                                            <h3 class="card-title">Salary Information</h3>
                                         </div>
                                         <!-- /.card-header -->
                                         <!-- form start -->
 
 
-                                    <form  class="form-horizontal" action="{{ route('admin.addcompany.store') }}" method="POST">
+                                    <form  class="form-horizontal" action="{{ route('admin.addsalary.store') }}" method="POST">
                                         @csrf
                                             <div class="card-body">
                                                 <x-alert></x-alert>
 
                                             <div class="form-group row">
-                                                <label  class="col-sm-2 col-form-label">Company Name</label>
+                                                <label  class="col-sm-2 col-form-label">Employee ID</label>
                                                 <div class="col-sm-6">
-                                                <input  type="text" name="com_name" class="form-control" placeholder="Enter Company Name" required="">
+                                                <input  type="text" name="name" class="form-control" placeholder="Enter salary Name" required="">
                                                 </div>
                                             </div>
 
@@ -109,7 +109,7 @@
                                                 <div class="col-sm-4">
                                                 <button type="submit" class="btn btn-success btn-2">Submit</button>
                                                 <button type="reset" class="btn btn-danger btn-2">Reset</button>
-                                                <a class="btn btn-info " href="{{ route('admin.company') }}">Go Back</a>
+                                                <a class="btn btn-info " href="{{ route('admin.salary') }}">Go Back</a>
                                                 </div>
                                             </div>
 
