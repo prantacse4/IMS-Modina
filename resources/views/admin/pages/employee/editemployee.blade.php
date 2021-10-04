@@ -75,7 +75,7 @@
                                             <div class="form-group row">
                                                 <label  class="col-sm-2 col-form-label">Employee Name</label>
                                                 <div class="col-sm-6">
-                                                <input  type="text" name="com_name" class="form-control" value="{{ $employee[0]->com_name }}" placeholder="Enter employee Name" required="">
+                                                <input  type="text" name="name" class="form-control" value="{{ $employee[0]->name }}" placeholder="Enter employee Name" required="">
                                                 </div>
                                             </div>
 
