@@ -31,7 +31,7 @@ class EmployeeController extends Controller
     {
         //Validation
         $request->validate([
-            'phone' => 'required|max:255|unique:dealers,phone',
+            'phone' => 'required|max:255|unique:employees,phone',
 
         ],[
             'phone.unique' => 'Phone no should be unique',

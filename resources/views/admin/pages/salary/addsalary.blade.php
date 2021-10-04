@@ -4,6 +4,9 @@
     Salary
 @endsection
 
+@section('extracsscdn')
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+@endsection
 
 
 @section('salarysidebar')
@@ -74,33 +77,23 @@
                                             <div class="form-group row">
                                                 <label  class="col-sm-2 col-form-label">Employee ID</label>
                                                 <div class="col-sm-6">
-                                                <input  type="text" name="name" class="form-control" placeholder="Enter salary Name" required="">
+                                                <select class="form-control select2 select2-info" id="employeeid" name="employeeid" style="width: 100%;" >
+                                                    <option selected ="false" value="0">Select Employee</option>
+                                                    @foreach ($employees as $employee)
+                                                    <option value="{{ $employee->employeeid }}">{{ $employee->name }} ({{$employee->employeeid}})</option>
+                                                    @endforeach
+                                                </select>
                                                 </div>
                                             </div>
 
 
 
                                             <div class="form-group row">
-                                                <label f class="col-sm-2 col-form-label">Phone</label>
+                                                <label f class="col-sm-2 col-form-label">Amount</label>
                                                 <div class="col-sm-6">
-                                                <input type="text" name="com_phone" class="form-control" placeholder="01XXXXXXXXX" required>
+                                                <input type="number" id="salary" name="amount" class="form-control" placeholder="Salary in Number" required>
                                                 </div>
                                             </div>
-
-                                            <div class="form-group row">
-                                                <label  class="col-sm-2 col-form-label">Email</label>
-                                                <div class="col-sm-6">
-                                                <input type="email" name="com_email" class="form-control" placeholder="xyz@email.com" >
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label  class="col-sm-2 col-form-label">Address</label>
-                                                <div class="col-sm-6">
-                                                <input id="pro_name" type="text" name="com_address" class="form-control" placeholder="Enter Address" required="">
-                                                </div>
-                                            </div>
-
 
 
 
@@ -151,7 +144,53 @@
 
 
 
+@section('extrajscdn')
+@section('extrajscdn')
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+<script>
+    $(function() {
+        //Initialize Select2 Elements
+        $('.select2').select2()
+            //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
+    });
+</script>
 
+
+
+<script>
+
+var urlHeader = "http://127.0.0.1:8000";
+var salary = 0;
+
+$('select[name="employeeid"]').on('change', function(){
+
+    var employeeid = $(this).val();
+    if(employeeid != '' && employeeid != null && employeeid!= '0' && employeeid != 0){
+         $.ajax({
+
+                url : '/admin/getSalary/'+employeeid,
+                type : "GET",
+                dataType : "json",
+                success:function(data)
+                {
+                    $('#salary').val(data[0].salary);
+                    
+                }
+
+            });
+    }
+});
+
+
+</script>
+
+
+
+
+@endsection
 
 
 

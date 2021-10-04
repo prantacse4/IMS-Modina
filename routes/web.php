@@ -210,10 +210,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/salary/add', [SalaryController::class, 'addsalary'])->name('admin.addsalary');
     Route::post('/salary/add/store', [SalaryController::class, 'store'])->name('admin.addsalary.store');
     Route::delete('/salary/delete/{salary}', [SalaryController::class, 'delete'])->name('admin.deletesalary');
-    Route::get('/salary/view/{id}', [SalaryController::class, 'salaryviewer'])->name('admin.salaryviewer');
-    Route::get('/salary/edit/{id}', [SalaryController::class, 'editsalary'])->name('admin.editsalary');
-    Route::put('/salary/update/{salary}', [SalaryController::class, 'updatesalary'])->name('admin.updatesalary.update');
-
+    Route::get('/getSalary/{employeeid}', [SalaryController::class, 'getSalary'])->name('getSalary');
+    
+    
 
 
 });
