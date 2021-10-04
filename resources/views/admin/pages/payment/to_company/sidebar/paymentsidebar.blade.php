@@ -274,7 +274,6 @@ with font-awesome or any other icon font library -->
 
 
 
-
             <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                     <i class="fas fa-funnel-dollar nav-icon"></i>
@@ -285,13 +284,13 @@ with font-awesome or any other icon font library -->
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="#" class="nav-link ">
+                        <a href="{{ route('admin.expense') }}" class="nav-link ">
                             <i class="fa fa-share nav-icon"></i>
                             <p>Expenses</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('admin.addexpense') }}" class="nav-link">
                             <i class="fa fa-share nav-icon"></i>
                             <p>Add Expenses</p>
                         </a>
@@ -313,7 +312,7 @@ with font-awesome or any other icon font library -->
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="#" class="nav-link ">
+                        <a href="{{ route('admin.adjustment') }}" class="nav-link ">
                             <i class="fa fa-share nav-icon"></i>
                             <p>Adjustments</p>
                         </a>
@@ -335,20 +334,20 @@ with font-awesome or any other icon font library -->
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="#" class="nav-link ">
+                        <a href="{{ route('admin.refund') }}" class="nav-link ">
                             <i class="fa fa-share nav-icon"></i>
                             <p>Refund</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('admin.refundtocompany') }}" class="nav-link">
                             <i class="fa fa-share nav-icon"></i>
                             <p>To Company</p>
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('admin.refundbydealer') }}" class="nav-link">
                             <i class="fa fa-share nav-icon"></i>
                             <p>By Dealer</p>
                         </a>
@@ -369,20 +368,20 @@ with font-awesome or any other icon font library -->
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="#" class="nav-link ">
+                        <a href="{{ route('admin.reportproduct') }}" class="nav-link ">
                             <i class="fa fa-share nav-icon"></i>
                             <p>Products</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('admin.reportpayment') }}" class="nav-link">
                             <i class="fa fa-share nav-icon"></i>
                             <p>Payments</p>
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('admin.reportprofit') }}" class="nav-link">
                             <i class="fa fa-share nav-icon"></i>
                             <p>Profits</p>
                         </a>
@@ -402,28 +401,26 @@ with font-awesome or any other icon font library -->
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('admin.profile') }}" class="nav-link">
                         <i class="fa fa-share nav-icon"></i>
                         <p>Profile</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('admin.admin') }}" class="nav-link">
                         <i class="fa fa-share nav-icon"></i>
                         <p>Admins</p>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('admin.addadmin') }}" class="nav-link">
                         <i class="fa fa-share nav-icon"></i>
                         <p>Add Admin</p>
                     </a>
                 </li>
             </ul>
         </li>
-
-
 
 
         <li class="nav-item">

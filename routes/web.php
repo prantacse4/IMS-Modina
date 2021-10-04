@@ -1,14 +1,18 @@
 <?php
 
+use App\Http\Controllers\Backend\AdjustmentController;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DealerController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\CompanyController;
 use App\Http\Controllers\Backend\EmployeeController;
+use App\Http\Controllers\Backend\ExpenseController;
 use App\Http\Controllers\Backend\PaymentController;
 use App\Http\Controllers\Backend\PurchaseController;
 use App\Http\Controllers\Backend\PurchaseProductController;
+use App\Http\Controllers\Backend\RefundController;
+use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\SalaryController;
 use App\Http\Controllers\Backend\SoldProductController;
 use App\Http\Controllers\Backend\TempProductStockController;
@@ -212,6 +216,38 @@ Route::group(['prefix' => 'admin'], function () {
     Route::delete('/salary/delete/{salary}', [SalaryController::class, 'delete'])->name('admin.deletesalary');
     Route::get('/getSalary/{employeeid}', [SalaryController::class, 'getSalary'])->name('getSalary');
     
+    
+    Route::get('/expense', [ExpenseController::class, 'expense'])->name('admin.expense');
+    Route::get('/expense/add', [ExpenseController::class, 'addexpense'])->name('admin.addexpense');
+
+
+    Route::get('/expense', [ExpenseController::class, 'expense'])->name('admin.expense');
+    Route::get('/expense/add', [ExpenseController::class, 'addexpense'])->name('admin.addexpense');
+    Route::post('/expense/add/store', [ExpenseController::class, 'store'])->name('admin.addexpense.store');
+    Route::delete('/expense/delete/{expense}', [ExpenseController::class, 'delete'])->name('admin.deleteexpense');
+    Route::get('/expense/edit/{id}', [ExpenseController::class, 'editexpense'])->name('admin.editexpense');
+    Route::put('/expense/update/{expense}', [ExpenseController::class, 'updateexpense'])->name('admin.updateexpense.update');
+    
+    Route::get('/refund', [RefundController::class, 'refund'])->name('admin.refund');
+    Route::get('/refundbydealer', [RefundController::class, 'refundbydealer'])->name('admin.refundbydealer');
+    Route::get('/refundtocompany', [RefundController::class, 'refundtocompany'])->name('admin.refundtocompany');
+
+
+    Route::get('/adjustment', [AdjustmentController::class, 'adjustment'])->name('admin.adjustment');
+    Route::get('/adjustment/add', [AdjustmentController::class, 'addadjustment'])->name('admin.addadjustment');
+
+
+    Route::get('/adjustment', [AdjustmentController::class, 'adjustment'])->name('admin.adjustment');
+    Route::get('/adjustment/add', [AdjustmentController::class, 'addadjustment'])->name('admin.addadjustment');
+
+    Route::get('/reportproduct', [ReportController::class, 'reportproduct'])->name('admin.reportproduct');
+    Route::get('/reportpayment', [ReportController::class, 'reportpayment'])->name('admin.reportpayment');
+    Route::get('/reportprofit', [ReportController::class, 'reportprofit'])->name('admin.reportprofit');
+    
+
+    Route::get('/profile', [AdminController::class, 'profile'])->name('admin.profile');
+    Route::get('/admin', [AdminController::class, 'admin'])->name('admin.admin');
+    Route::get('/admin/add', [AdminController::class, 'addadmin'])->name('admin.addadmin');
     
 
 
