@@ -86,6 +86,7 @@
                                         <div class="card-header">
                                             <h4 class="text-center pt-3"><b>{{ $employee[0]->name }}</b></h4>
                                             <h5><strong>ID : {{ $employee[0]->employeeid }}</strong></h5>
+                                            <h5><strong>Position : {{ $employee[0]->position }}</strong></h5>
                                             <h6>Address : {{ $employee[0]->address }}</h6>
                                         </div>
                                         <div class="card-body">
